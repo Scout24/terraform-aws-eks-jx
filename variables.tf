@@ -4,7 +4,7 @@
 variable "region" {
   description = "The region to create the resources into"
   type        = string
-  default     = "us-east-1"
+  default     = "eu-west-1"
 }
 
 variable "cluster_name" {
@@ -16,7 +16,7 @@ variable "cluster_name" {
 variable "cluster_version" {
   description = "Kubernetes version to use for the EKS cluster."
   type        = string
-  default     = "1.15"
+  default     = "1.17"
 }
 
 // ----------------------------------------------------------------------------
@@ -67,25 +67,25 @@ variable "velero_ttl" {
 variable "desired_node_count" {
   description = "The number of worker nodes to use for the cluster"
   type        = number
-  default     = 3
+  default     = 2
 }
 
 variable "min_node_count" {
   description = "The minimum number of worker nodes to use for the cluster"
   type        = number
-  default     = 3
+  default     = 2
 }
 
 variable "max_node_count" {
   description = "The maximum number of worker nodes to use for the cluster"
   type        = number
-  default     = 5
+  default     = 3
 }
 
 variable "node_machine_type" {
   description = "The instance type to use for the cluster's worker nodes"
   type        = string
-  default     = "m5.large"
+  default     = "m5a.large"
 }
 
 variable "spot_price" {
@@ -312,37 +312,6 @@ variable "s3_kms_arn" {
 }
 
 variable "is_jx2" {
-  default     = true
-  type        = bool
-  description = "Flag to specify if jx2 related resources need to be created"
-}
-
-variable "ignoreLoadBalancer" {
-  default     = false
-  type        = bool
-  description = "Flag to specify if jx boot will ignore loadbalancer DNS to resolve to an IP"
-}
-
-variable "cluster_endpoint_private_access" {
-  description = "Indicates whether or not the Amazon EKS private API server endpoint is enabled."
-  type        = bool
-  default     = false
-}
-
-variable "cluster_endpoint_private_access_cidrs" {
-  description = "List of CIDR blocks which can access the Amazon EKS private API server endpoint, when public access is disabled."
-  type        = list(string)
-  default     = ["0.0.0.0/0"]
-}
-
-variable "cluster_endpoint_public_access" {
-  description = "Indicates whether or not the Amazon EKS public API server endpoint is enabled."
-  type        = bool
-  default     = true
-}
-
-variable "cluster_endpoint_public_access_cidrs" {
-  description = "List of CIDR blocks which can access the Amazon EKS public API server endpoint."
-  type        = list(string)
-  default     = ["0.0.0.0/0"]
+  default = true
+  type    = bool
 }
